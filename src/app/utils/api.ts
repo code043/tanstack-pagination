@@ -14,6 +14,11 @@ export const getPosts = async (
   return result.data;
 };
 
+export const getAllPosts = async (): Promise<Post[]> => {
+  const result = await req.get("/posts");
+  return result.data;
+};
+
 export const getPost = async (id: number): Promise<Post> => {
   const result = await req.get("/posts/" + id);
   return result.data;

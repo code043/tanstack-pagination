@@ -1,5 +1,5 @@
-import { useQuery } from "@tanstack/react-query";
-import { getPost, getPosts } from "./api";
+import { keepPreviousData, useQuery } from "@tanstack/react-query";
+import { getAllPosts, getPost, getPosts } from "./api";
 
 export const usePosts = (limit: number, start: number) => {
   const query = useQuery({
@@ -8,6 +8,11 @@ export const usePosts = (limit: number, start: number) => {
   });
   return query;
 };
+export const useAllPosts = () =>
+  useQuery({
+    queryKey: ["posts"],
+    queryFn: getAllPosts,
+  });
 
 export const usePost = (id: number) => {
   const query = useQuery({
